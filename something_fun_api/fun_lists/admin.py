@@ -33,13 +33,9 @@ class SeriesAdmin(ImportExportModelAdmin):
     def display_ott(self, obj):
         return ", ".join([item.name for item in obj.ott_platforms.all()])
 
+
 class ListAdmin(ImportExportModelAdmin):
     list_display = ["content_type", "object_id", "content_object"]
-
-    def _init_(self, *args, **kwargs):
-        super()._init_(*args, **kwargs)
-        allowed_models = [Movie, Series]
-        self.fields['content_type'].queryset = ContentType.objects.filter(model__in=[m._meta.model_name for m in allowed_models])
 
 
 admin.site.register(Movie, MovieAdmin)

@@ -4,7 +4,6 @@ from django.contrib.contenttypes import fields
 from fun_users.models import User
 
 
-
 # Create your models here.
 
 
@@ -38,12 +37,20 @@ class Series(models.Model):
 
     def __str__(self):
         return self.name
-    
+
+
 class List(models.Model):
+    allowed_models = ["fun_lists.Movie", "fun_lists.Series"]
+
     name = models.CharField(max_length=255)
-
     user = models.ForeignKey(User, on_delete=models.CASCADE, default=0)
-    content_type = models.ForeignKey(ContentType,on_delete=models.CASCADE)
+    content_type = models.ForeignKey(
+        ContentType,
+        on_delete=models.CASCADE,
+        limit_choices_to={
+            "model__in": [m.split(".")[1].lower() for m in allowed_models],
+            "app_label__in": list(set(m.split(".")[0] for m in allowed_models)),
+        },
+    )
     object_id = models.PositiveIntegerField()
-    content_object = fields.GenericForeignKey('content_type', 'object_id')
-
+    content_object = fields.GenericForeignKey("content_type", "object_id")

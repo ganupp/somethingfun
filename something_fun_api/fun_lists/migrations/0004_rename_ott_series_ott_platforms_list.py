@@ -7,23 +7,37 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('contenttypes', '0002_remove_content_type_name'),
-        ('fun_lists', '0003_alter_movie_genre_alter_movie_ott_platforms_and_more'),
+        ("contenttypes", "0002_remove_content_type_name"),
+        ("fun_lists", "0003_alter_movie_genre_alter_movie_ott_platforms_and_more"),
     ]
 
     operations = [
         migrations.RenameField(
-            model_name='series',
-            old_name='ott',
-            new_name='ott_platforms',
+            model_name="series",
+            old_name="ott",
+            new_name="ott_platforms",
         ),
         migrations.CreateModel(
-            name='List',
+            name="List",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=255)),
-                ('object_id', models.PositiveIntegerField()),
-                ('content_type', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='contenttypes.contenttype')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("name", models.CharField(max_length=255)),
+                ("object_id", models.PositiveIntegerField()),
+                (
+                    "content_type",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to="contenttypes.contenttype",
+                    ),
+                ),
             ],
         ),
     ]
