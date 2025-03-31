@@ -1,4 +1,6 @@
-# somethingfun
+# Something FUN
+
+Tried something, cause we were bored XD
 
 ```
 $ cd something_fun
