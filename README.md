@@ -1,6 +1,6 @@
 # Something FUN
 
-Tried something, cause we were bored XD
+Bored devs wanted to share movie recommendations, so here we are XD
 
 ```
 $ cd something_fun
