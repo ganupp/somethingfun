@@ -7,17 +7,34 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('fun_lists', '0001_initial'),
+        ("fun_lists", "0001_initial"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='Series',
+            name="Series",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=1000)),
-                ('genre', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='fun_lists.genre')),
-                ('ott', models.ManyToManyField(blank=True, null=True, to='fun_lists.ott')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("name", models.CharField(max_length=1000)),
+                (
+                    "genre",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to="fun_lists.genre",
+                    ),
+                ),
+                (
+                    "ott",
+                    models.ManyToManyField(blank=True, null=True, to="fun_lists.ott"),
+                ),
             ],
         ),
     ]

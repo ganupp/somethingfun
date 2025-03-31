@@ -16,12 +16,21 @@ class OTTAdmin(ImportExportModelAdmin):
 
 
 class MovieAdmin(ImportExportModelAdmin):
-    list_display = ["name", "genre"]
+    list_display = ["name", "genre", "display_ott"]
     list_filter = ["name", "genre"]
 
+    @admin.display(description="OTT Platforms")
+    def display_ott(self, obj):
+        return ", ".join([item.name for item in obj.ott_platforms.all()])
+
+
 class SeriesAdmin(ImportExportModelAdmin):
-    list_display = ["name"]
-    list_filter = ["name"]
+    list_display = ["name", "genre", "display_ott"]
+    list_filter = ["name", "genre"]
+
+    @admin.display(description="OTT Platforms")
+    def display_ott(self, obj):
+        return ", ".join([item.name for item in obj.ott.all()])
 
 
 admin.site.register(Movie, MovieAdmin)
