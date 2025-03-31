@@ -15,3 +15,8 @@ class Movie(models.Model):
     name = models.CharField(max_length=1000)
     genre = models.ForeignKey(Genre, on_delete=models.CASCADE)
     ott_platforms = models.ManyToManyField(OTT, null=True, blank=True)
+
+class Series(models.Model):
+    name = models.CharField(max_length=1000)
+    genre = models.ForeignKey(Genre, on_delete=models.CASCADE)
+    ott = models.ManyToManyField(OTT, null=True, blank=True)
